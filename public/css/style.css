@@ -1,0 +1,101 @@
+
+/* Halaman User */
+/* ------------ */
+.bg-satu{
+    background-color: rgb(37, 126, 131);
+}
+
+.bg-dua{
+    background-color: rgb(18, 97, 101);
+}
+
+.bg-tiga{
+    background-color: rgb(185, 207, 230);
+}
+
+.bg-empat{
+    background-color: rgb(63, 180, 92);
+}
+
+.bg-lima{
+    background-color: rgb(52, 199, 89);
+}
+
+.border-satu{
+    border-color: rgb(37, 126, 131);
+}
+
+.btn-satu{
+    background-color: rgb(37, 126, 131);
+    border-color: rgb(37, 126, 131);
+}
+
+.btn-satu:hover,
+.btn-satu:active,
+.btn-satu:focus{
+    background-color: rgb(37, 126, 131) !important;
+    border-color: rgb(37, 126, 131) !important;
+}
+
+.btn-dua{
+    background-color: white;
+    color: rgb(37, 126, 131);
+    border-color: rgb(37, 126, 131);
+}
+
+.btn-dua:hover,
+.btn-dua:active,
+.btn-dua:focus,
+.btn-dua:disabled{
+    background-color: rgb(225, 225, 225) !important;
+    color: rgb(37, 126, 131) !important;
+    border-color: rgb(37, 126, 131) !important;
+}
+
+.btn-tiga{
+    background-color: rgb(10, 184, 173);
+    color: white;
+}
+
+.btn-tiga:hover,
+.btn-tiga:focus{
+    background-color: rgb(7, 149, 140) !important;
+    color: white !important;
+}
+
+.text-satu{
+    color: rgb(54, 195, 213);
+}
+
+.text-dua{
+    color: rgb(239, 243, 112);
+}
+
+.text-tiga{
+    color: rgb(63, 113, 124);
+}
+
+.bt-text{
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.scroll-tabel{
+    max-height: 475px;
+    overflow-y: auto;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--bg-tiga);
+}
+
+tbody tr:nth-child(even) {
+    background-color: white;
+}
+
+.custom-shadow {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5); /* Bayangan lebih tebal */
+}
