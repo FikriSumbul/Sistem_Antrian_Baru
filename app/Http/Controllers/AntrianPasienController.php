@@ -12,10 +12,11 @@ class AntrianPasienController extends Controller
      */
     public function antrianPasien()
     {
-        // Mengambil semua data antrian pasien yang belum selesai
+        // Ambil 10 pasien pertama dalam antrian yang belum selesai
         $antrianPasien = AntrianPasien::where('status', '!=', 'Selesai')
-        ->orderBy('waktu_antrian', 'asc')
-        ->get();
+            ->orderBy('waktu_antrian', 'asc')
+            ->take(10) // Ambil 10 data pertama
+            ->get();
 
         // Ambil pasien dengan status "Dipanggil"
         $pasienDipanggil = AntrianPasien::where('status', 'Dipanggil')->first();
