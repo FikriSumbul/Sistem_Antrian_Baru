@@ -18,20 +18,25 @@
                             <th>Asal Pasien</th>
                         </tr>
                     </thead>
-                    <tbody class="text-dark">
-                        @foreach ($antrianPasien as $data)
+                    <tbody class="fw-medium text-dark">
+                        @if ($antrianPasien->isNotEmpty())
+                            @foreach ($antrianPasien as $data)
+                                <tr>
+                                    <td>{{ $data->nomor_rm }}</td>
+                                    <td class="bt-text">{{ $data->nama_pasien }}</td>
+                                    <td class="bt-text">{{ $data->nama_dokter }}</td>
+                                    <td>{{ $data->asal_pasien }}</td>
+                                </tr>
+                            @endforeach
+                        @else
                             <tr>
-                                <td>{{ $data->nomor_rm }}</td>
-                                <td class="bt-text">{{ $data->nama_pasien }}</td>
-                                <td class="bt-text">{{ $data->nama_dokter }}</td>
-                                <td>{{ $data->asal_pasien }}</td>
+                                <td colspan="4">Tidak ada pasien dalam antrian.</td>
                             </tr>
-                        @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
         </div>
-
         <!-- Bagian vidio iklan (Kanan) -->
         <div class="col-5" style="height: 500px">
             <div class="row rounded-4">
@@ -47,7 +52,7 @@
                 <div class="col-12 rounded-3">
                     <div class="bg-satu text-center w-100 rounded-3 custom-shadow text-white">
                         <h3 class="fw-semibold py-1 rounded-3">PANGGILAN ANTRIAN</h3>
-                        <div id="panggilan-antrian">
+                        <div>
                             @if ($pasienDipanggil)
                                 <div class="bg-white py-2 rounded-3 text-dark">
                                     <h2 class="fw-bold">{{ $pasienDipanggil->nama_pasien }}</h2>
@@ -73,5 +78,21 @@
             <span class="fs-8 fw-bold">SELAMAT DATANG DI RUMAH SAKIT MATA MAKASSAR</span>
         </div>
     </nav>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            function updateAntrian() {
+                $.ajax({
+                    url: "{{ route('antrian') }}", // Sesuaikan dengan route controller
+                    type: "GET",
+                    success: function (data) {
+                        $("tbody").html($(data).find("tbody").html()); // Update isi tabel
+                    }
+                });
+            }
+
+            setInterval(updateAntrian, 5000); // Update setiap 5 detik
+        </script>
+
 
 @endsection
