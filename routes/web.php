@@ -21,7 +21,6 @@ Route::get('/pasien', [DataPasienController::class, 'tampilkanAntrian'])->name('
 Route::post('/cari-pasien', [DataPasienController::class, 'cariPasien'])->name('cari.pasien');
 
 Route::get('/get-antrian', [DataPasienController::class, 'tampilkanAntrian'])->name('tampilkan.antrian');
-Route::get('/data-antrian', [DataPasienController::class, 'tampilkanAntrian'])->name('data.antrian');
 Route::post('/panggil/{nomor_rm}', [DataPasienController::class, 'panggilPasien'])->name('panggil.pasien');
 Route::post('/selesai/{nomor_rm}', [DataPasienController::class, 'selesaiPasien'])->name('selesai.pasien');
 Route::post('/reset-antrian', [DataPasienController::class, 'resetAntrian'])->name('reset.antrian');

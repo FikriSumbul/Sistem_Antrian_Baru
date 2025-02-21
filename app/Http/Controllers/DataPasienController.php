@@ -7,10 +7,8 @@ use App\Models\DataPasien;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class DataPasienController extends Controller
-{
-    public function cariPasien(Request $request)
-    {
+class DataPasienController extends Controller{
+    public function cariPasien(Request $request){
         $request->validate([
             'nomor_rm' => 'required|string'
         ]);
@@ -30,7 +28,7 @@ class DataPasienController extends Controller
         if (!$existingAntrian) {
             AntrianPasien::create([
                 'nomor_rm'      => $pasien->nomor_rm,
-                'waktu_antrian' => Carbon::now(),
+                'waktu_antrian' => Carbon::now('WITA'),
                 'nama_pasien'   => $pasien->nama_pasien,
                 'nama_dokter'   => $pasien->nama_dokter,
                 'asal_pasien'   => $pasien->asal_pasien,
@@ -42,8 +40,7 @@ class DataPasienController extends Controller
     }
 
     // Fungsi untuk menampilkan daftar antrian
-    public function tampilkanAntrian()
-    {
+    public function tampilkanAntrian(){
         $antrian = AntrianPasien::whereDate('waktu_antrian', Carbon::today())
                                     ->where('status', '!=', 'Selesai')
                                     ->get();
@@ -75,27 +72,11 @@ class DataPasienController extends Controller
         return redirect()->back()->with('success', 'Pasien telah dipanggil.');
     }
 
-
-    public function selesaiPasien($nomor_rm)
-    {
+    public function selesaiPasien($nomor_rm){
         $pasien = AntrianPasien::where('nomor_rm', $nomor_rm)->first();
         if ($pasien) {
             $pasien->update(['status' => 'Selesai']);
         }
         return redirect()->back()->with('success', 'Pasien telah selesai.');
-    }
-
-    public function updateData(Request $request) {
-        $nomor_rm = $request->input('id');
-        $status = $request->input('status');
-
-        $pasien = AntrianPasien::where('nomor_rm', $nomor_rm)->first();
-
-        if ($pasien) {
-            $pasien->update(['status' => $status]);
-            return response()->json(['message' => 'Status pasien berhasil diupdate.']);
-        } else {
-            return response()->json(['message' => 'Data pasien tidak ditemukan.'], 404);
-        }
     }
 }

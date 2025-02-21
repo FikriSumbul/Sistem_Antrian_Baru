@@ -91,7 +91,7 @@
                 });
             }
 
-            setInterval(updateAntrian, 5000); // Update setiap 5 detik
+            setInterval(updateAntrian, 1000); // Update setiap 1 detik
         </script>
 
 

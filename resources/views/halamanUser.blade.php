@@ -126,6 +126,6 @@
         </div>
     </div>
 
-        <script src="{{ asset('js/pemanggilan.js') }}"></script>
+    <script src="{{ asset('js/pemanggilan.js') }}"></script>
 
 @endsection
